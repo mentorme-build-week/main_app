@@ -1,23 +1,27 @@
-@import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Asap:700&display=swap');
 
 body {
   background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-  font-family: 'Heebo', sans-serif;
+  font-family: 'Asap', sans-serif;
 
 }
 
 .signin {
   display: flex;
   flex-direction: column;
-  border: solid red 2px;
   width: 500px;
-  margin: 80px auto;
+  margin: 100px auto;
   align-items: center;
+}
+
+.portrait {
+  margin-bottom: 30px;
 }
 
 .signin h1 {
   color: white;
   font-weight: bold;
+  font-size: 3em;
 }
 
 .signinform {
@@ -30,4 +34,37 @@ body {
   border: none;
   border-bottom: 0.5px solid white;
   text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  width: 250px;
+}
+
+input, select, textarea{
+  color: white;
+  outline: none;
+}
+
+.signin input::placeholder {
+  color: white;
+  font-size: 1.3em;
+  opacity: 0.5;
+  font-family: 'Asap', sans-serif;
+}
+
+input.middle:focus {
+  outline-width: 0;
+}
+
+.signinform button {
+  padding: 15px 0;
+  font-family: 'Asap', sans-serif;
+  border-radius: 8px;
+  background-color: white;
+  color: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  border: none;
+}
+
+h5 {
+  opacity: 0.55;
+  color: white;
 }

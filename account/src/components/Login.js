@@ -28,10 +28,10 @@ class Login extends Component {
         return(
             <div className="signin">
                 <h1>Sign In</h1>
-                <div>portrait placeholder</div>
+                <div className="portrait">portrait placeholder</div>
                 <form className="signinform" onSubmit={this.signIn}>
                     <input type="password" value={password} placeholder="Password" onChange={this.handleChange} name="password" />
-                    <button type="submit">Sign In</button>
+                    <button type="submit">SIGN IN</button>
                 </form>
                 <h5>Switch account</h5>
             </div>
