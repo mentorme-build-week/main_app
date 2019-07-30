@@ -1,33 +1,33 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
+
+body {
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  font-family: 'Heebo', sans-serif;
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.signin {
   display: flex;
   flex-direction: column;
+  border: solid red 2px;
+  width: 500px;
+  margin: 80px auto;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.signin h1 {
   color: white;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+.signinform {
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.signin input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.5px solid white;
+  text-align: center;
 }
