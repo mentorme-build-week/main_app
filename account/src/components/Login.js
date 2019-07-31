@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { connect } from 'react-redux';
+import { signIn } from '../actions/index'
 
 class Login extends Component {
     constructor() {
@@ -22,6 +23,12 @@ class Login extends Component {
     signIn = event => {
         event.preventDefault();
 
+        const { email, password } = this.state;
+
+        this.props.signIn({
+            "email": email,
+            "password": password
+        })
     }
 
     render() {
@@ -45,4 +52,13 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapDispatchToProps = {
+    signIn: signIn
+}
+
+export default(
+	connect(
+		null,
+		mapDispatchToProps,
+	)(Login)
+)

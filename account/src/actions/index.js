@@ -5,6 +5,9 @@ import axios from 'axios'
 export const REGISTERING_USER = 'REGISTERING_USER'
 export const REGISTERED_USER = 'REGISTERED_USER'
 export const FAILED_REGISTER = 'FAILED_REGISTER'
+export const SIGNING_IN = "SIGNING_IN"
+export const SIGNED_IN = 'SIGNED_IN'
+export const FAILED_SIGNIN = 'FAILED_SIGNIN'
 
 
 
@@ -26,4 +29,22 @@ export function registerUser(payload) {
         })
   
     }
-  };
+};
+
+export function signIn(payload) {
+  
+    return dispatch => {
+      
+      dispatch({ type: SIGNING_IN });
+  
+      return axios.post('https://mentor-me-app-be.herokuapp.com/api/users/login', payload)
+        .then((response) => {
+          dispatch({ type: SIGNED_IN, payload: response.data });
+        })
+  
+        .catch((error) => {
+          dispatch({ type: FAILED_SIGNIN, payload: error })
+        })
+  
+    }
+};
