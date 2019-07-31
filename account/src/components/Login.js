@@ -6,7 +6,7 @@ class Login extends Component {
     constructor() {
         super();
         this.state =  {
-            user: '',
+            email: '',
             password: ''
         }
     }
@@ -22,15 +22,10 @@ class Login extends Component {
     signIn = event => {
         event.preventDefault();
 
-        axios.get('https://mentor-me-app-be.herokuapp.com/')
-            .then(response => {
-                console.log(response)
-            })
-
     }
 
     render() {
-        const { user, password } = this.state;
+        const { email, password } = this.state;
 
         return(
             <div>
@@ -39,6 +34,7 @@ class Login extends Component {
                     <h1>Sign In</h1>
                     <div className="portrait">portrait placeholder</div>
                     <form className="signinform" onSubmit={this.signIn}>
+                    <input type="text" value={email} placeholder="Email" onChange={this.handleChange} name="email" />
                         <input type="password" value={password} placeholder="Password" onChange={this.handleChange} name="password" />
                         <button type="submit">SIGN IN</button>
                     </form>
