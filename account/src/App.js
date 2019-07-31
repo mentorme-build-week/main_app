@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Login from '../src/components/Login';
 import Register from '../src/components/Register'
+import { connect } from 'react-redux'
 
 
 class App extends Component {

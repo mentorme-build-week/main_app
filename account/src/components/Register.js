@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { registerUser } from '../actions/index'
+import { connect } from 'react-redux'
 
 class Register extends Component {
     constructor() {
         super();
         this.state =  {
-            name: '',
-            country: '',
+            firstname: '',
+            lastname: '',
             email: '',
             password: ''
         }
@@ -33,10 +35,10 @@ class Register extends Component {
                 <div className="register">
                     <h1>Register</h1>
                     <form className="registerform" onSubmit={this.registerAccount}>
-                        <h3>Full Name</h3>
-                        <input type="text" onChange={this.handleChange} name="name" />
-                        <h3>Country</h3>
-                        <input type="text" onChange={this.handleChange} name="country" /> 
+                        <h3>First Name</h3>
+                        <input type="text" onChange={this.handleChange} name="firstname" />
+                        <h3>Last Name</h3>
+                        <input type="text" onChange={this.handleChange} name="lastname" /> 
                         <h3>Email</h3>
                         <input type="text" onChange={this.handleChange} name="email" /> 
                         <h3>Password</h3>
@@ -49,4 +51,13 @@ class Register extends Component {
     }
 }
 
-export default Register;
+const mapDispatchToProps = {
+    registerUser: registerUser
+}
+
+export default(
+	connect(
+		null,
+		mapDispatchToProps,
+	)(Register)
+)
