@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { registerUser } from '../actions/index'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 class Register extends Component {
     constructor() {
@@ -13,7 +12,7 @@ class Register extends Component {
         }
     }
 
-    handleChange = event => {
+    handleChange = (event) => {
         event.preventDefault();
 
         this.setState({
@@ -21,14 +20,13 @@ class Register extends Component {
         })
     }
 
-    registerAccount = event => {
+    registerAccount = (event) => {
         event.preventDefault();
 
     }
 
     render() {
-        const { name, password } = this.state;
-
+        
         return(
             <div>
                 <h1 className="mentormeheader">MentorMe</h1>
@@ -51,13 +49,10 @@ class Register extends Component {
     }
 }
 
-const mapDispatchToProps = {
-    registerUser: registerUser
-}
 
 export default(
 	connect(
 		null,
-		mapDispatchToProps,
+		null,
 	)(Register)
 )

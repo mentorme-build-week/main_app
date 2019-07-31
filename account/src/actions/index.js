@@ -25,5 +25,5 @@ export function registerUser(payload) {
           dispatch({ type: FAILED_REGISTER, payload: error })
         })
   
-        }
+    }
   };

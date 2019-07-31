@@ -22,8 +22,6 @@ const initialState = {
 
       case FAILED_REGISTER: {
         console.log('failed')
-
-        break;
       }
       
       default: {
