@@ -29,13 +29,9 @@ class Login extends Component {
             "email": email,
             "password": password
         })
-        
-        if (this.props.signingIn === false) {
-                this.props.getQuestions();
-        } else (console.log('Loading'));
-    
 
-        this.props.history.push("/home");
+        this.props.history.push("/home")
+        
     }
 
     render() {

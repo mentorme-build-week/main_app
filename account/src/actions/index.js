@@ -58,8 +58,6 @@ export function getQuestions() {
 
   return dispatch => {
 
-    console.log(localStorage.getItem("token"))
-
     dispatch({ type: GETTING_QUESTIONS });
 
     const token = localStorage.getItem("token");

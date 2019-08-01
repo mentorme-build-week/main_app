@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import Login from '../src/components/Login';
 import Register from '../src/components/Register';
 import Home from '../src/components/Home';
+import PrivateRoute from '../src/components/PrivateRoute'
 import { connect } from 'react-redux'
 
 
@@ -19,7 +20,7 @@ class App extends Component {
       <div className="App">
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
-        <Route exact path="/home" component={Home} />
+        <PrivateRoute exact path="/home" component={Home} />
       </div>
     );
   }
