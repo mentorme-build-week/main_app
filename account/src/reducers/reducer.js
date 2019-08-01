@@ -8,8 +8,17 @@ import {
 } from '../actions/index'
 
 const initialState = {
+    questions: [],
+    registeringUser: false,
+    signingIn: false,
     error: null,
-    array: []
+    user: {
+      email: '',
+      password: '',
+      firstname: '',
+      lastname: '',
+    },
+    token: ''
   }
   
   const reducer = (state = initialState, action) => {
@@ -17,27 +26,47 @@ const initialState = {
       
       case REGISTERING_USER: {
         console.log('registering')
+        break;
         }
 
       case REGISTERED_USER: {
         console.log(action.payload)
+        break;
       }
 
       case FAILED_REGISTER: {
         console.log('failed')
+        break;
       }
 
       case SIGNING_IN: {
         console.log('registering')
+        break;
         }
 
       case SIGNED_IN: {
         console.log(action.payload)
+        return {
+          ...state,
+          questions: [],
+          registeringUser: false,
+          signingIn: false,
+          error: null,
+          user: {
+            email: action.payload.email,
+            password: action.payload.password,
+            firstname: action.payload.firstname,
+            lastname: action.payload.lastname,
+          },
+          token: action.payload.token
       }
+    }
 
       case FAILED_SIGNIN: {
         console.log('failed')
+        break;
       }
+    
       
       default: {
         return state;

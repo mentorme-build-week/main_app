@@ -43,7 +43,9 @@ export function signIn(payload) {
         })
   
         .catch((error) => {
-          dispatch({ type: FAILED_SIGNIN, payload: error })
+          const message = error.response ? error.response : null;
+
+          dispatch({ type: FAILED_SIGNIN, payload: message })
         })
   
     }
