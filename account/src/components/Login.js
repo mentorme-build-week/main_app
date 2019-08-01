@@ -28,9 +28,12 @@ class Login extends Component {
         this.props.signIn({
             "email": email,
             "password": password
-        })
-
-        this.props.history.push("/home")
+        }).then(() => {
+            this.props.history.push("/home")
+    })
+        .catch((err) => {
+            console.error(err)
+    })
         
     }
 
