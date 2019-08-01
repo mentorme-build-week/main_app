@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getQuestions } from '../actions/index'
-import axios from 'axios';
+import Question from '../components/Question'
 
 class Home extends Component {
     constructor() {
@@ -27,7 +26,7 @@ class Home extends Component {
         return(
             <div>
                 {questions.map( question => {
-                    return <h3>{question.content}</h3>
+                    return <Question question={question} key={question.id} />
                 })}
             </div>
         )
