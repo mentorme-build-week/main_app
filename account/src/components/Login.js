@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { signIn } from '../actions/index'
+import { signIn, getQuestions } from '../actions/index'
 
 class Login extends Component {
     constructor() {
@@ -29,6 +29,13 @@ class Login extends Component {
             "email": email,
             "password": password
         })
+        
+        if (this.props.signingIn === false) {
+                this.props.getQuestions();
+        } else (console.log('Loading'));
+    
+
+        this.props.history.push("/home");
     }
 
     render() {
@@ -52,13 +59,20 @@ class Login extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        signingIn: state.signingIn
+    }
+}
+
 const mapDispatchToProps = {
-    signIn: signIn
+    signIn: signIn,
+    getQuestions: getQuestions
 }
 
 export default(
 	connect(
-		null,
+		mapStateToProps,
 		mapDispatchToProps,
 	)(Login)
 )

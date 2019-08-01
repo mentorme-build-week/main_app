@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Login from '../src/components/Login';
 import Register from '../src/components/Register';
-import Home from '../src/components/Login';
+import Home from '../src/components/Home';
 import { connect } from 'react-redux'
 
 
