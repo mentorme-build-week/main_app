@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { signIn, getQuestions } from '../actions/index'
+import axios from 'axios';
 
 class Login extends Component {
     constructor() {
@@ -20,6 +21,8 @@ class Login extends Component {
         })
     }
 
+    /// this action signs in a user, returns a token to storage, 
+    /// and loads the questions to the store
     signIn = event => {
         event.preventDefault();
 
@@ -29,7 +32,20 @@ class Login extends Component {
             "email": email,
             "password": password
         }).then(() => {
-            this.props.history.push("/home")
+            const token = localStorage.getItem('token')
+
+            axios.get('https://mentor-me-app-be.herokuapp.com/api/questions', {
+                headers: {
+                Authorization: token
+            }
+            })
+                .then((response) => {
+                    this.props.getQuestions(response.data)
+                    this.props.history.push("/home")
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
     })
         .catch((err) => {
             console.error(err)

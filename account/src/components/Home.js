@@ -17,26 +17,18 @@ class Home extends Component {
 
     componentDidMount() {
 
-        const token = localStorage.getItem('token')
-
-        axios.get('https://mentor-me-app-be.herokuapp.com/api/questions', {
-            headers: {
-              Authorization: token
-          }
-        })
-            .then((response) => {
-                this.props.getQuestions(response.data)
-            })
-            .catch((err) => {
-                console.log(err);
-            })
     }
 
     render() {
 
+        const { questions } = this.props;
+        console.log(questions);
+
         return(
             <div>
-                hey
+                {questions.map( question => {
+                    return <h3>{question.content}</h3>
+                })}
             </div>
         )
     }
