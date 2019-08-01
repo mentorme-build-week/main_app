@@ -5,9 +5,7 @@ import {
   SIGNING_IN,
   SIGNED_IN,
   FAILED_SIGNIN,
-  GETTING_QUESTIONS,
-  LOADED_QUESTIONS,
-  FAILED_QUESTIONS
+  LOAD_QUESTIONS
 } from '../actions/index'
 
 const initialState = {
@@ -93,29 +91,10 @@ const initialState = {
         }
       }
 
-      case GETTING_QUESTIONS: {
+      case LOAD_QUESTIONS: {
         return {
           ...state,
-          registeringUser: false,
-          signingIn: false,
-          error: null,
-        }
-      }
-
-      case LOADED_QUESTIONS: {
-        return {
-          ...state,
-          questions: action.payload,
-          registeringUser: false,
-          signingIn: false,
-          error: null,
-      }
-    }
-
-      case FAILED_QUESTIONS: {
-        return {
-          ...state,
-          error: true
+          questions: action.payload
         }
       }
     

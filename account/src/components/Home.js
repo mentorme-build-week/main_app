@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getQuestions } from '../actions/index'
+import axios from 'axios';
 
 class Home extends Component {
     constructor() {
@@ -12,16 +13,23 @@ class Home extends Component {
         }
     }
 
-    /// once state loads, add questions to reducer
+    /// once state loads, add questions to reducer and user to state
 
     componentDidMount() {
-        
-        this.props.getQuestions();
 
-        this.setState({
-            user: this.props.user,
-            questions: this.props.questions
+        const token = localStorage.getItem('token')
+
+        axios.get('https://mentor-me-app-be.herokuapp.com/api/questions', {
+            headers: {
+              Authorization: token
+          }
         })
+            .then((response) => {
+                this.props.getQuestions(response.data)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     render() {
