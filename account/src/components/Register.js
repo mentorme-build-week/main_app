@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { registerUser } from '../actions/index'
+import { registerUser, getQuestions } from '../actions/index';
+import axios from 'axios';
 
 class Register extends Component {
     constructor() {
@@ -31,7 +32,25 @@ class Register extends Component {
             "lastname": lastname,
             "email": email,
             "password": password
-        })
+        }).then(() => {
+            const token = localStorage.getItem('token')
+
+            axios.get('https://mentor-me-app-be.herokuapp.com/api/questions', {
+                headers: {
+                Authorization: token
+            }
+            })
+                .then((response) => {
+                    this.props.getQuestions(response.data)
+                    this.props.history.push("/home")
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+    })
+        .catch((err) => {
+            console.error(err)
+    })
 
     }
 
@@ -60,7 +79,8 @@ class Register extends Component {
 }
 
 const mapDispatchToProps = {
-    registerUser: registerUser
+    registerUser: registerUser,
+    getQuestions: getQuestions
 }
 
 export default(

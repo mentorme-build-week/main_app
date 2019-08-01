@@ -13,12 +13,11 @@ export default function(props) {
 	return (
 		<Route {...rest} render={() => {
 			// get a value saved in our browser's local storage
-			if (props.token) {
-				return <Component />
-			} else {
-				return <Redirect to="/" />
-			}
-		}} />
+			const token = localStorage.getItem('token')
 
+			return token
+				? <Component />
+				: <Redirect to="/" />
+		}} />
 	)
 }
