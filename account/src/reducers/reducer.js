@@ -4,11 +4,14 @@ import {
   FAILED_REGISTER,
   SIGNING_IN,
   SIGNED_IN,
-  FAILED_SIGNIN
+  FAILED_SIGNIN,
+  GETTING_QUESTIONS,
+  LOADED_QUESTIONS,
+  FAILED_QUESTIONS
 } from '../actions/index'
 
 const initialState = {
-    questions: [],
+    questions: '',
     registeringUser: false,
     signingIn: false,
     error: null,
@@ -36,7 +39,7 @@ const initialState = {
       case REGISTERED_USER: {
         return {
           ...state,
-          questions: [],
+          questions: '',
           registeringUser: false,
           signingIn: false,
           error: null,
@@ -69,7 +72,7 @@ const initialState = {
       case SIGNED_IN: {
         return {
           ...state,
-          questions: [],
+          questions: '',
           registeringUser: false,
           signingIn: false,
           error: null,
@@ -84,6 +87,32 @@ const initialState = {
     }
 
       case FAILED_SIGNIN: {
+        return {
+          ...state,
+          error: true
+        }
+      }
+
+      case GETTING_QUESTIONS: {
+        return {
+          ...state,
+          registeringUser: false,
+          signingIn: false,
+          error: null,
+        }
+      }
+
+      case LOADED_QUESTIONS: {
+        return {
+          ...state,
+          questions: action.payload,
+          registeringUser: false,
+          signingIn: false,
+          error: null,
+      }
+    }
+
+      case FAILED_QUESTIONS: {
         return {
           ...state,
           error: true
