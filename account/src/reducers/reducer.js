@@ -25,27 +25,48 @@ const initialState = {
     switch(action.type) {
       
       case REGISTERING_USER: {
-        console.log('registering')
-        break;
+        return {
+          ...state,
+          registeringUser: true,
+          signingIn: false,
+          error: null,
+          }
         }
 
       case REGISTERED_USER: {
-        console.log(action.payload)
-        break;
+        return {
+          ...state,
+          questions: [],
+          registeringUser: false,
+          signingIn: false,
+          error: null,
+          user: {
+            email: action.payload.email,
+            password: action.payload.password,
+            firstname: action.payload.firstname,
+            lastname: action.payload.lastname,
+          },
+          token: action.payload.token
+        }
       }
 
       case FAILED_REGISTER: {
-        console.log('failed')
-        break;
+        return {
+          ...state,
+          error: true
+        }
       }
 
       case SIGNING_IN: {
-        console.log('registering')
-        break;
+        return {
+          ...state,
+          registeringUser: false,
+          signingIn: true,
+          error: null,
         }
+      }
 
       case SIGNED_IN: {
-        console.log(action.payload)
         return {
           ...state,
           questions: [],
@@ -63,8 +84,10 @@ const initialState = {
     }
 
       case FAILED_SIGNIN: {
-        console.log('failed')
-        break;
+        return {
+          ...state,
+          error: true
+        }
       }
     
       
