@@ -9,6 +9,7 @@ export const SIGNING_IN = "SIGNING_IN"
 export const SIGNED_IN = 'SIGNED_IN'
 export const FAILED_SIGNIN = 'FAILED_SIGNIN'
 export const LOAD_QUESTIONS = "LOAD_QUESTIONS"
+export const ADD_RESPONSE = "ADD_RESPONSE"
 
 
 
@@ -60,5 +61,13 @@ export function getQuestions(payload) {
 
     dispatch({ type: LOAD_QUESTIONS, payload });
 
+  }
+}
+
+export function addResponse(payload, id) {
+
+  return dispatch => {
+    
+    dispatch({ type: ADD_RESPONSE, payload, id})
   }
 }

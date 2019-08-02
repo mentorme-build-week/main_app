@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { addResponse } from '../actions/index'
 
 
 class Question extends Component {
@@ -9,7 +10,9 @@ class Question extends Component {
       topic: '',
       content: '',
       user_id: '',
-      id: ''
+      id: '',
+      comment: '',
+      comments: []
     };
   }
 
@@ -20,13 +23,47 @@ class Question extends Component {
         topic: question.topic,
         content: question.content,
         user_id: question.userid,
-        id: question.id
+        id: question.id,
+        comments: question.comments
     })
+  }
+
+  handleChange = (event) => {
+    event.preventDefault();
+
+    this.setState({
+        [event.target.name]: event.target.value
+    })
+}
+
+  addResponse = event => {
+
+    event.preventDefault();
+
+    const { comments, comment, id } = this.state;
+
+    const payload =  {...comments, comment};
+
+    this.props.addResponse(payload, id);
   }
 
   render() {
       return (
-          <h1>{this.state.topic}</h1>
+          <div className="questionboard">
+            <h3>{this.state.content}</h3>
+            <h4>{this.state.topic}</h4>
+            <form onSubmit={this.addResponse}>
+                <textarea 
+                    rows="5" 
+                    cols="60" 
+                    name="comment" 
+                    placeholder="Comment/Respond" 
+                    value={this.state.comment} 
+                    onChange={this.handleChange} 
+                />
+                <input type="submit" value="submit" />
+            </form>
+          </div>
       )
   }
 
@@ -38,10 +75,13 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = {
+    addResponse: addResponse
+}
 
 export default(
 	connect(
 		mapStateToProps,
-		null,
+		mapDispatchToProps,
 	)(Question)
 )
