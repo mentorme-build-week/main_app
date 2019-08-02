@@ -4,6 +4,7 @@ import Login from '../src/components/Login';
 import Register from '../src/components/Register';
 import Home from '../src/components/Home';
 import PrivateRoute from '../src/components/PrivateRoute';
+import Question from '../src/components/Question'
 import { connect } from 'react-redux';
 
 
@@ -25,6 +26,7 @@ class App extends Component {
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
         <PrivateRoute exact path="/home" component={Home} token={token} />
+        <Route exact path ="/questions/:id" component={Question} />
       </div>
     );
   }

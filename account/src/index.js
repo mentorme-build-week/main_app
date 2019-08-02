@@ -8,6 +8,7 @@ import reducer from './reducers/reducer';
 import App from './App'
 import { BrowserRouter as Router } from 'react-router-dom'
 import './registerlogin.css'
+import './home.css'
 
 const store = createStore(
   reducer,

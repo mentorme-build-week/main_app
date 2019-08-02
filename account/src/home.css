@@ -1,0 +1,19 @@
+.questions {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    background-color: none;
+    margin: 0 auto;
+}
+
+.question {
+    text-align: center;
+    border: solid lightblue 4px;
+}
+
+.homenav {
+    display: flex;
+    width: 800px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
