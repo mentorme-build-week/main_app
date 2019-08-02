@@ -10,6 +10,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import './registerlogin.css'
 import './home.css'
 
+
 const store = createStore(
   reducer,
   compose(
@@ -17,6 +18,10 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
   )/* applyMiddleware goes here */
 );
+
+store.subscribe(() => {
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+})
 
 
 ReactDOM.render(

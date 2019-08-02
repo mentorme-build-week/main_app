@@ -8,7 +8,7 @@ import {
   LOAD_QUESTIONS
 } from '../actions/index'
 
-const initialState = {
+let initialState = {
     questions: '',
     registeringUser: false,
     signingIn: false,
@@ -20,7 +20,13 @@ const initialState = {
       lastname: '',
     },
     token: ''
-  }
+}
+
+const persistedState = localStorage.getItem('reduxState')
+
+if (persistedState) {
+  initialState = JSON.parse(persistedState)
+}
   
   const reducer = (state = initialState, action) => {
     switch(action.type) {
