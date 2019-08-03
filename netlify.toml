@@ -1,0 +1,4 @@
+[build]
+    base      = "account/"
+    publish   = "account/build"
+    command   = "npm run build"
