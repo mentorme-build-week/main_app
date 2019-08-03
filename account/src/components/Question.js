@@ -9,25 +9,8 @@ class Question extends Component {
   constructor() {
     super();
     this.state = {
-      topic: '',
-      content: '',
-      user_id: '',
-      id: '',
-      comment: '',
-      comments: []
+      comment: ''
     };
-  }
-
-  componentDidMount() {
-    const question = this.props.questions.find(i => String(i.id) === this.props.match.params.id);
-
-    this.setState({
-        topic: question.topic,
-        content: question.content,
-        user_id: question.userid,
-        id: question.id,
-        comments: question.comments
-    })
   }
 
   handleChange = (event) => {
@@ -41,12 +24,8 @@ class Question extends Component {
   addResponse = event => {
 
     event.preventDefault();
-
-    const { comments, comment, id } = this.state;
-
-    const payload =  {...comments, comment};
-
-    this.props.addResponse(payload, id);
+    
+    this.props.addResponse([...this.props.comments, this.state.comment], this.props.id)
   }
 
   deleteQuestion = event => {
@@ -84,8 +63,9 @@ class Question extends Component {
   render() {
       return (
           <div className="questionboard">
-            <h3>{this.state.content}</h3>
-            <h4>{this.state.topic}</h4>
+            <h1>{this.props.comments}</h1>
+            <h3>{this.props.content}</h3>
+            <h4>{this.props.topic}</h4>
             <form onSubmit={this.addResponse}>
                 <textarea 
                     rows="5" 
@@ -104,9 +84,11 @@ class Question extends Component {
 
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
+  const question = state.questions.find(i => String(i.id) === props.match.params.id);
     return {
-        questions: state.questions
+      comments: [],
+      ...question
     }
 }
 

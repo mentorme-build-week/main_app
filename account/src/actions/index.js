@@ -65,9 +65,9 @@ export function getQuestions(payload) {
 }
 
 export function addResponse(payload, id) {
-
+  
   return dispatch => {
-    
+
     dispatch({ type: ADD_RESPONSE, payload, id})
   }
 }

@@ -5,7 +5,8 @@ import {
   SIGNING_IN,
   SIGNED_IN,
   FAILED_SIGNIN,
-  LOAD_QUESTIONS
+  LOAD_QUESTIONS,
+  ADD_RESPONSE
 } from '../actions/index'
 
 
@@ -104,6 +105,19 @@ if (persistedState) {
           questions: action.payload
         }
       }
+
+      case ADD_RESPONSE: {
+        return {
+          ...state,
+          questions: state.questions.map(question => {
+            if(question.id === action.id) {
+              return { ...question, comments: action.payload }
+            } else {
+              return question;
+            }
+          })
+          }
+        }
     
       
       default: {

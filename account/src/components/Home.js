@@ -27,6 +27,7 @@ class Home extends Component {
             <div>
                 <div className="homenav">
                     <Link to="/search"><h3>Search</h3></Link>
+                    <Link to="/post"><h3>Post</h3></Link>
                     <h3>Profile</h3>
                 </div>
                 <div className="questions">
