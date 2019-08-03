@@ -36,3 +36,57 @@
 .searchpage input.middle:focus {
     outline-width: 0;
   }
+
+.topictitle{
+    font-size: 3em;
+    display: block;
+    color: #c4fcff;
+}
+label {
+    color: darkblue;
+    margin-right: 5px;
+}
+
+select {
+    border-radius: 10px;
+    border: none;
+    padding: 3px;
+    width: 150px;
+}
+
+.searchpage .questions {
+    margin-top: 20px;
+}
+
+.postpage {
+    display: flex;
+    flex-direction: column;
+}
+
+.postpage form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.postbutton {
+  padding: 15px 0;
+  font-family: 'Asap', sans-serif;
+  border-radius: 8px;
+  background-color: white;
+  color: #00f2fe;
+  border: none;
+  width: 300px;
+  margin-top: 15px;
+  font-size: 2em;
+}
+
+.postpage h1 {
+    text-align: center;
+}
+
+.questioncontent {
+    width: 500px;
+    margin-top: 20px;
+}

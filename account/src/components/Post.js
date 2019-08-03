@@ -51,19 +51,20 @@ inChangeHandler = (event) => {
 render() {
 
         return (
-            <div>
-              
-           <form onSubmit={this.submitHandler} > 
-            <input placeholder='user_id' type="number" value={this.state.user_id} onChange={this.changeHandler} name='user_id'/>
-            <input placeholder='content' value={this.state.content} onChange={this.changeHandler} name='content' />
-                 <label htmlFor="topic">Select Topic:  </label>
-                 <select value={this.state.topic} onChange={this.inChangeHandler}>
-                    <option value="Photography">Photography</option>
-                    <option value="Programming">Programming</option>
-                    <option value="Small Business">Small Business</option>
-                </select>
-            <button type="submit">Post</button>
-           </form>   
+            <div className="postpage">
+            <h1>Post a Question!</h1>
+            <form onSubmit={this.submitHandler} > 
+                <input placeholder='User ID' type="number" value={this.state.user_id} onChange={this.changeHandler} name='user_id'/>
+                <input className="questioncontent" placeholder='Question?' value={this.state.content} onChange={this.changeHandler} name='content' />
+                    <label htmlFor="topic">Select Topic:  </label>
+                    <select value={this.state.topic} onChange={this.inChangeHandler}>
+                        <option value="Photography">Photography</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Small Business">Small Business</option>
+                    </select>
+                    <h3>{(this.state.topic) ? `${this.state.topic}` : "Topic" }</h3>
+                <button className="postbutton" type="submit">Post</button>
+            </form>   
             </div>
     )
         }

@@ -40,17 +40,16 @@ class Search extends Component{
         const topic = this.props.questions.filter(question => question.topic.includes(this.state.items)) 
         return(
             <div className="searchpage">
-                <h3 className="topictitle">{this.state.items}</h3>
+                <h3 className="topictitle">{(this.state.items) ? `${this.state.items}` : "Search a Question"}</h3>
                  <input className="searchinput" placeholder="Search" value={this.state.value} name='value' onChange={this.onChangeHandler}/>
                  <form>
                     <label htmlFor="topic">Select Topic:  </label>
-                    <select className="topic" value={this.state.items} onChange={this.inChangeHandler}>
-                    <option value=""> Pick </option>
-                    <option value="Photography"  name='Photography'> Photography </option>
+                    <select placeholder="Topic" className="topic" value={this.state.items} onChange={this.inChangeHandler}>
+                    <option value=""></option>
+                    <option value="Photography" name='Photography'> Photography </option>
                     <option value="Programming"  name="Programming"> Programming </option>
                     <option value="Small Business"  name="Small Business"> Small Business </option>
                     </select>
-                    <button type="submit">Find</button>
                  </form>
 { this.state.value.length > 0 ? question.map(question => {
     return <div className="questions">
@@ -62,7 +61,7 @@ class Search extends Component{
                 </Link>
             </div>
  })
- : <p>Search for a question</p>  
+ : null  
                    }
                    
          { this.state.items.length > 0  ?  topic.map(question => {
@@ -77,7 +76,7 @@ class Search extends Component{
                     })
                     :        
          
-                    <p>Searching...</p>
+                    null
                                 
                     
 }
