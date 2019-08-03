@@ -26,7 +26,7 @@ class App extends Component {
       <div className="App">
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
-        <PrivateRoute exact path="/home" component={Home} token={token} />
+        <PrivateRoute exact path="/home" component={Home} />
         <Route exact path ="/questions/:id" component={Question} />
         <PrivateRoute exact path ="/search" component={Search} />
       </div>

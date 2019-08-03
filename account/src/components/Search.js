@@ -1,7 +1,6 @@
 /// Jamison's search component
 
 import React, { Component } from 'react'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 
@@ -54,7 +53,7 @@ class Search extends Component{
                     <button type="submit">Find</button>
                  </form>
 { this.state.value.length > 0 ? question.map(question => {
-    return <Link to={`/messenger/${question.id}`}>
+    return <Link to={`/questions/${question.id}`}>
     <div key={question}>
     <p>{question.content}</p>
     </div>
@@ -64,7 +63,7 @@ class Search extends Component{
                    }
                    
          { this.state.items.length > 0  ?  topic.map(question => {
-         return <Link to={`/messenger/${question.id}`}>
+         return <Link to={`/questions/${question.id}`}>
          <div key={question}>
          <p>{question.content}</p> 
          </div>
@@ -75,7 +74,7 @@ class Search extends Component{
                                 
                     
 }
-<Link to={'/post'}><button>Post a qustion</button></Link>
+<Link to={'/post'}><button>Post a question</button></Link>
             </div>
             
         )
