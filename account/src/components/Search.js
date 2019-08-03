@@ -48,7 +48,7 @@ class Search extends Component{
                     <option value=""> Pick </option>
                     <option value="Photography"  name='Photography'> Photography </option>
                     <option value="Programming"  name="Programming"> Programming </option>
-                    <option value="Small Business"  name="Small Business"> Small Bussiness </option>
+                    <option value="Small Business"  name="Small Business"> Small Business </option>
                     </select>
                     <button type="submit">Find</button>
                  </form>

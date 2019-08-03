@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { addResponse } from '../actions/index'
+import { getQuestions } from '../actions/index'
+import axios from 'axios'
 
 
 class Question extends Component {
@@ -47,6 +49,38 @@ class Question extends Component {
     this.props.addResponse(payload, id);
   }
 
+  deleteQuestion = event => {
+    event.preventDefault();
+
+    const token = localStorage.getItem("token");
+    
+    axios.delete(`https://mentor-me-app-be.herokuapp.com/api/questions/${this.props.match.params.id}`, {
+        headers: {
+            Authorization: token
+        }
+        })
+        .then(() => {
+          const token = localStorage.getItem('token')
+
+          axios.get('https://mentor-me-app-be.herokuapp.com/api/questions', {
+              headers: {
+              Authorization: token
+          }
+          })
+              .then((response) => {
+                  this.props.getQuestions(response.data)
+                  this.props.history.push("/home")
+              })
+              .catch((err) => {
+                  console.log(err);
+              })
+  })
+    .catch(error => {
+        console.log(error)
+    })
+
+}
+
   render() {
       return (
           <div className="questionboard">
@@ -63,6 +97,7 @@ class Question extends Component {
                 />
                 <input type="submit" value="submit" />
             </form>
+            <button onClick={this.deleteQuestion}>DELETE QUESTION</button>
           </div>
       )
   }
@@ -76,7 +111,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    addResponse: addResponse
+    addResponse: addResponse,
+    getQuestions: getQuestions
 }
 
 export default(
