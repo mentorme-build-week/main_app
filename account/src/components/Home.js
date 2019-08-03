@@ -12,29 +12,28 @@ class Home extends Component {
         }
     }
 
-    /// once state loads, add questions to reducer and user to state
-
-    componentDidMount() {
-
-    }
-
     render() {
 
         const { questions } = this.props;
         console.log(questions);
+        console.log(this.props.user)
 
         return(
-            <div>
+            <div className="questionshome">
+                <h2>Welcome {this.props.user.firstname} !</h2>
                 <div className="homenav">
                     <Link to="/search"><h3>Search</h3></Link>
                     <Link to="/post"><h3>Post</h3></Link>
-                    <h3>Profile</h3>
+                    <Link to="/profile"><h3>Profile</h3></Link>
                 </div>
                 <div className="questions">
                     {questions.map( question => {
                         return <Link to={`/questions/${question.id}`}>
-                                    <h3 className="question">{question.content}</h3>
-                               </Link>
+                                    <div className="questionblock">
+                                        <h3 className="topic">{question.topic}</h3>
+                                        <h3 className="question">{question.content}</h3>    
+                                    </div>
+                                </Link>
                     })}
                 </div>
             </div>
