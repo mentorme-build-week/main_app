@@ -39,9 +39,9 @@ class Search extends Component{
         const question = this.props.questions.filter(question => question.content.includes(this.state.value))
         const topic = this.props.questions.filter(question => question.topic.includes(this.state.items)) 
         return(
-            <div>
-                <p>{this.state.items}</p>
-                 <input placeholder="Search" value={this.state.value} name='value' onChange={this.onChangeHandler}/>
+            <div className="searchpage">
+                <h3 className="topictitle">{this.state.items}</h3>
+                 <input className="searchinput" placeholder="Search" value={this.state.value} name='value' onChange={this.onChangeHandler}/>
                  <form>
                     <label htmlFor="topic">Select Topic:  </label>
                     <select className="topic" value={this.state.items} onChange={this.inChangeHandler}>
@@ -53,28 +53,34 @@ class Search extends Component{
                     <button type="submit">Find</button>
                  </form>
 { this.state.value.length > 0 ? question.map(question => {
-    return <Link to={`/questions/${question.id}`}>
-    <div key={question}>
-    <p>{question.content}</p>
-    </div>
-    </Link>
+    return <div className="questions">
+                <Link to={`/questions/${question.id}`}>
+                    <div className="questionblock">
+                        <h3 className="topic">{question.topic}</h3>
+                        <h3 className="question">{question.content}</h3>    
+                    </div>
+                </Link>
+            </div>
  })
  : <p>Search for a question</p>  
                    }
                    
          { this.state.items.length > 0  ?  topic.map(question => {
-         return <Link to={`/questions/${question.id}`}>
-         <div key={question}>
-         <p>{question.content}</p> 
-         </div>
-           </Link> })
+         return <div className="questions">
+                    <Link to={`/questions/${question.id}`}>
+                        <div className="questionblock">
+                            <h3 className="topic">{question.topic}</h3>
+                            <h3 className="question">{question.content}</h3>    
+                        </div>
+                    </Link> 
+                </div>
+                    })
                     :        
          
                     <p>Searching...</p>
                                 
                     
 }
-<Link to={'/post'}><button>Post a question</button></Link>
             </div>
             
         )

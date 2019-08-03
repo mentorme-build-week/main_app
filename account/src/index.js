@@ -9,6 +9,7 @@ import App from './App'
 import { BrowserRouter as Router } from 'react-router-dom'
 import './registerlogin.css'
 import './home.css'
+import './search.css'
 
 
 const store = createStore(
