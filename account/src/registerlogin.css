@@ -126,3 +126,14 @@ option {
   width: 175px;
   border-radius: 15px;
 }
+
+.profile img {
+  border-radius: 25px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

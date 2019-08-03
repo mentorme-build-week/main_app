@@ -7,6 +7,7 @@ import PrivateRoute from '../src/components/PrivateRoute';
 import Question from '../src/components/Question';
 import Search from '../src/components/Search';
 import Post from '../src/components/Post';
+import Profile from '../src/components/Profile'
 import { connect } from 'react-redux';
 
 
@@ -29,6 +30,7 @@ class App extends Component {
         <PrivateRoute exact path ="/search" component={Search} />
         <Route exact path='/post' render={(props) =>
             <Post {...props} /> } />
+        <Route exact path="/profile" component={Profile} />
       </div>
     );
   }

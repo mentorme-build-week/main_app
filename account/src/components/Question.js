@@ -33,7 +33,7 @@ class Question extends Component {
 
     const token = localStorage.getItem("token");
     
-    axios.delete(`https://mentor-me-app-be.herokuapp.com/api/questions/${this.props.match.params.id}`, {
+    axios.delete(`https://mentor-me-app-be.herokuapp.com/api/questions/${this.props.id}`, {
         headers: {
             Authorization: token
         }
@@ -63,21 +63,27 @@ class Question extends Component {
   render() {
       return (
           <div className="questionboard">
-            <h1>{this.props.comments}</h1>
             <h3>{this.props.content}</h3>
-            <h4>{this.props.topic}</h4>
+            <h5>Answer below</h5>
             <form onSubmit={this.addResponse}>
                 <textarea 
                     rows="5" 
                     cols="60" 
                     name="comment" 
-                    placeholder="Comment/Respond" 
                     value={this.state.comment} 
                     onChange={this.handleChange} 
                 />
-                <input type="submit" value="submit" />
+                <button type="submit" className="answerbutton">Answer</button>
+                <div className="responses">
+                  {this.props.comments.map( comment => {
+                    return (
+                      <div className="commentblock">
+                        <h3>{comment}</h3>
+                      </div>
+                  )})}
+                </div>
             </form>
-            <button onClick={this.deleteQuestion}>DELETE QUESTION</button>
+            <button className="deletequestion" onClick={this.deleteQuestion}>DELETE QUESTION</button>
           </div>
       )
   }
