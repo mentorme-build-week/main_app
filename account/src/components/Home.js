@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { getQuestions } from '../actions/index'
 import { Link } from 'react-router-dom'
-import Question from '../components/Question'
 
 class Home extends Component {
     constructor() {
@@ -27,7 +26,7 @@ class Home extends Component {
         return(
             <div>
                 <div className="homenav">
-                    <h3>Search</h3>
+                    <Link to="/search"><h3>Search</h3></Link>
                     <h3>Profile</h3>
                 </div>
                 <div className="questions">
