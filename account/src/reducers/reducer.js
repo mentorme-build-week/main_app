@@ -5,11 +5,13 @@ import {
   SIGNING_IN,
   SIGNED_IN,
   FAILED_SIGNIN,
-  LOAD_QUESTIONS
+  LOAD_QUESTIONS,
+  ADD_RESPONSE
 } from '../actions/index'
 
 let initialState = {
     questions: '',
+    comments: [],
     registeringUser: false,
     signingIn: false,
     error: null,
@@ -101,6 +103,13 @@ if (persistedState) {
         return {
           ...state,
           questions: action.payload
+        }
+      }
+
+      case ADD_RESPONSE: {
+
+        return {
+          ...state
         }
       }
     
