@@ -8,10 +8,10 @@ import {
   LOAD_QUESTIONS,
   ADD_RESPONSE
 } from '../actions/index'
+import { bindActionCreators } from 'redux';
 
 let initialState = {
     questions: '',
-    comments: [],
     registeringUser: false,
     signingIn: false,
     error: null,
@@ -108,8 +108,18 @@ if (persistedState) {
 
       case ADD_RESPONSE: {
 
+        const question = state.questions.find(i => String(i.id) === action.id)
+
         return {
-          ...state
+          ...state,
+          questions: {
+            ...state,
+            question: {
+              ...state,
+              comments: action.payload
+            }
+            
+          }
         }
       }
     
