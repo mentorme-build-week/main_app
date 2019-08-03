@@ -26,8 +26,7 @@ submitHandler = (e) => {
     
     const token = localStorage.getItem("token");
 
-    axios
-        .post('https://mentor-me-app-be.herokuapp.com/api/questions/', this.state, {
+    axios.post('https://mentor-me-app-be.herokuapp.com/api/questions/', this.state, {
             headers: {
                 Authorization: token
             }
@@ -37,7 +36,7 @@ submitHandler = (e) => {
             questions = [...questions, response.data]
             console.log(this.props)
             this.props.getQuestions(questions)
-            this.props.history.push('/home')
+            this.props.history.push(`/questions/${response.data.id}`)
         })
         .catch(err => {
             console.log(err);
@@ -46,26 +45,26 @@ submitHandler = (e) => {
 
 inChangeHandler = (event) => {
     event.preventDefault();
-    this.setState({items : event.target.value})
+    this.setState({topic : event.target.value})
 }
 
 render() {
 
         return (
-            <div>
-              
-           <form onSubmit={this.submitHandler} > 
-            <input placeholder='user_id' type="number" value={this.state.user_id} onChange={this.changeHandler} name='user_id'/>
-            <input placeholder='content' value={this.state.content} onChange={this.changeHandler} name='content' />
-                 <label htmlFor="topic">Select Topic:  </label>
-                <select className="topic" value={this.state.topic} onChange={this.inChangeHandler}>
-                    <option value=""> Pick </option>
-                    <option value={this.state.topic}  name='Photography'> Photography </option>
-                    <option value={this.state.topic}  name="Programming"> Programming </option>
-                    <option value={this.state.topic}  name="Small Business"> Small Bussiness </option>
-                </select>
-            <button type="submit">Post</button>
-           </form>   
+            <div className="postpage">
+            <h1>Post a Question!</h1>
+            <form onSubmit={this.submitHandler} > 
+                <input placeholder='User ID' type="number" value={this.state.user_id} onChange={this.changeHandler} name='user_id'/>
+                <input className="questioncontent" placeholder='Question?' value={this.state.content} onChange={this.changeHandler} name='content' />
+                    <label htmlFor="topic">Select Topic:  </label>
+                    <select value={this.state.topic} onChange={this.inChangeHandler}>
+                        <option value="Photography">Photography</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Small Business">Small Business</option>
+                    </select>
+                    <h3>{(this.state.topic) ? `${this.state.topic}` : "Topic" }</h3>
+                <button className="postbutton" type="submit">Post</button>
+            </form>   
             </div>
     )
         }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { registerUser, getQuestions } from '../actions/index';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 class Register extends Component {
     constructor() {
@@ -72,6 +73,7 @@ class Register extends Component {
                         <input type="password" onChange={this.handleChange} name="password" /> 
                         <button type="submit">Register</button>
                     </form>
+                    <Link to="/"><h5>Already have an account?</h5></Link>
                 </div>
             </div>
         )

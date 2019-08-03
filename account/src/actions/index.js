@@ -24,6 +24,7 @@ export function registerUser(payload) {
   
       return axios.post('https://mentor-me-app-be.herokuapp.com/api/users/register', payload)
         .then((response) => {
+          localStorage.setItem('token', response.data.token)
           dispatch({ type: REGISTERED_USER, payload: response.data });
         })
   
@@ -65,9 +66,9 @@ export function getQuestions(payload) {
 }
 
 export function addResponse(payload, id) {
-
+  
   return dispatch => {
-    
+
     dispatch({ type: ADD_RESPONSE, payload, id})
   }
 }

@@ -1,0 +1,147 @@
+.searchpage {
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchpage input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.8px solid rgba(255, 255, 255, 0.863);
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    width: 450px;
+    font-family: 'Asap', sans-serif;
+    letter-spacing: 2px;
+    font-size: 1.8em;
+  
+  }
+  
+.searchpage input, select, textarea{
+    color: white;
+    outline: none;
+  }
+  
+.searchpage input::placeholder {
+    color: white;
+    font-size: 1.3em;
+    opacity: 0.5;
+    font-family: 'Asap', sans-serif;
+  }
+  
+.searchpage input.middle:focus {
+    outline-width: 0;
+  }
+
+.topictitle{
+    font-size: 3em;
+    display: block;
+    color: #c4fcff;
+}
+label {
+    color: darkblue;
+    margin-right: 5px;
+}
+
+select {
+    border-radius: 10px;
+    border: none;
+    padding: 3px;
+    width: 150px;
+}
+
+.searchpage .questions {
+    margin-top: 20px;
+}
+
+.postpage {
+    display: flex;
+    flex-direction: column;
+}
+
+.postpage form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.postbutton {
+  padding: 15px 0;
+  font-family: 'Asap', sans-serif;
+  border-radius: 8px;
+  background-color: white;
+  color: #00f2fe;
+  border: none;
+  width: 300px;
+  margin-top: 15px;
+  font-size: 2em;
+}
+
+.postpage h1 {
+    text-align: center;
+}
+
+.questioncontent {
+    width: 500px;
+    margin-top: 20px;
+}
+
+.questionboard {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.questionboard h3 {
+    font-size: 2em;
+    color: #c4fcff;
+}
+
+.questionboard form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+textarea {
+    font-family: 'Asap', sans-serif;
+    color: black;
+}
+
+.questionboard h4 {
+    font-size: 1.6em;
+    color: darkblue;
+}
+
+.answerbutton {
+  padding: 15px 0;
+  font-family: 'Asap', sans-serif;
+  border-radius: 8px;
+  background-color: white;
+  color: #00f2fe;
+  border: none;
+  width: 300px;
+  margin-top: 15px;
+  font-size: 2em;
+}
+
+.deletequestion {
+  padding: 5px 0;
+  font-family: 'Asap', sans-serif;
+  border-radius: 8px;
+  background-color: white;
+  color: red;
+  border: none;
+  width: 250px;
+  margin-top: 15px;
+  font-size: 1.5em;
+}

@@ -61,7 +61,9 @@ class Login extends Component {
                 <h1 className="mentormeheader">MentorMe</h1>
                 <div className="signin">
                     <h1>Sign In</h1>
-                    <div className="portrait">portrait placeholder</div>
+                    <div className="portrait">
+                        <img src={(localStorage.getItem('token')) ? "/images/portrait.jpg" : "/images/default.png" } />
+                    </div>
                     <form className="signinform" onSubmit={this.signIn}>
                     <input type="text" value={email} placeholder="Email" onChange={this.handleChange} name="email" />
                         <input type="password" value={password} placeholder="Password" onChange={this.handleChange} name="password" />
